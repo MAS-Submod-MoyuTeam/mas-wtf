@@ -2,6 +2,8 @@
 <h3 align="center">Easily find out what submod owns a topic!</h3>
 <h5 align="center">Yes, it abbreviates to WTF.</h5>
 
+🌏 [简体中文](./README_zhCN.md)
+
 <p align="center">
   <a href="https://github.com/friends-of-monika/mas-wtf/releases/latest">
     <img alt="Latest release" src="https://img.shields.io/github/v/release/friends-of-monika/mas-wtf">

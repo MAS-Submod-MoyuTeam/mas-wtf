@@ -34,7 +34,7 @@ init python in _fom_wtf_screens:
         if res is None:
             # When output is None, locating routine didn't find a trustworthy
             # script file location and therefore we cannot tell much to user
-            msgbox("Could not locate file that owns this topic.")
+            msgbox("无法找到拥有此对话主题的文件.")
 
         else:
             # Obtain file path and metadata (may be None) from result parameter
@@ -44,25 +44,24 @@ init python in _fom_wtf_screens:
                 # If no metadata found and file path has just one slash,
                 # therefore it must be located directly in game/
                 if len(_file.split("/")) == 2:
-                    message = ("Could not detect submod that owns this topic, "
-                               "it {{i}}may be{{/i}} an official MAS topic "
-                               "because its file is located directly in "
-                               "{{i}}game/{{/i}} folder: {{i}}{0}{{/i}}"
+                    message = ("无法找到此话题所属的子模组, "
+                               "它{{i}}可能{{/i}}是MAS本身的话题"
+                               "因为它的文件被定位在"
+                               "{{i}}game/{{/i}} 文件夹中: {{i}}{0}{{/i}}"
                                .format(_file))
 
                 # Otherwise, check if it's in game/Submods
                 elif (len(_file.split("/")) > 2 and
                       _file.lower().startswith("game/Submods")):
-                    message = ("Could not detect submod that owns this topic, "
-                               "it is impossible to search for its header "
-                               "because its file is located among other "
-                               "submods in {{i}}game/Submods{{/i}} folder: {0}"
+                    message = ("无法找到此话题所属的子模组, "
+                               "因为它的文件被定位在其他子模组的文件夹："
+                               "{{i}}game/Submods{{/i}} 文件夹中: {0}"
                                .format(_file))
 
                 # Or else fall back to some generic message
                 else:
-                    message = ("Could not detect what submod owns this topic, "
-                               "but it seems to be located in {{i}}{0}{{/i}}."
+                    message = ("无法找到此话题所属的子模组, "
+                               "不过看起来它的文件在：{{i}}{0}{{/i}}."
                                .format(_file))
 
             else:
@@ -72,8 +71,8 @@ init python in _fom_wtf_screens:
                 author = metadata["author"]
 
                 # Make up an informative message about topic and owning submod
-                message = ("It seems that this topic is owned by {{i}}{0} v{1} "
-                           "by {2}{{/i}} and it seems to be located in "
+                message = ("看起来这个话题在 {{i}}{0} v{1},  "
+                           "作者{2}{{/i}} 而且它的文件位于 "
                            "{{i}}{3}{{/i}}.".format(submod, version, author,
                                                     _file))
 
@@ -81,18 +80,18 @@ init python in _fom_wtf_screens:
             # it is the same as event label)
             if bool(ev.prompt) and ev.prompt != ev.eventlabel:
                 # Construct a message with info
-                topic_title = ("The topic is called {{i}}{0}{{/i}}"
+                topic_title = ("这个话题的名称为 {{i}}{0}{{/i}}"
                                .format(ev.prompt))
 
                 # If topic is random, tell so
                 if ev.random:
-                    topic_title += ("\nand it {i}might{/i} be accessible from "
-                                    "{i}Repeat conversation{/i} menu.")
+                    topic_title += ("\n而且它{i}可能{/i}能从"
+                                    "{i}我想再谈谈...{/i} 菜单中再次访问.")
 
                 # If topic is pooled, tell so
                 elif ev.pool:
-                    topic_title += ("\nand it {i}might{/i} be accessible from "
-                                    "{i}Hey, [m_name]...{/i} menu.")
+                    topic_title += ("\n而且它{i}可能{/i}能从"
+                                    "{i}嗨, [m_name]...{/i} 菜单中再次访问.")
 
                 # Else just close the message with a dot if topic prompt
                 # doesn't end with punctuation
